@@ -260,6 +260,57 @@
             margin-top: 0.5rem;
         }
 
+        .education-section {
+            padding: 3rem 2rem;
+        }
+
+        .education-item {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: slideInUp 0.8s ease-out;
+            flex-wrap: wrap;
+        }
+
+        .education-logo {
+            flex: 0 0 200px;
+            text-align: center;
+        }
+
+        .education-logo img {
+            max-width: 180px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .education-logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .education-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .education-info h3 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .education-info p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+        }
+
         .skills-description {
             background: white;
             padding: 2rem;
@@ -414,6 +465,7 @@
                 <a href="#" onclick="cambiarTab('inicio'); return false;">Inicio</a>
                 <a href="#" onclick="cambiarTab('proyectos'); return false;">Proyectos</a>
                 <a href="#" onclick="cambiarTab('habilidades'); return false;">Habilidades</a>
+                <a href="#" onclick="cambiarTab('educacion'); return false;">Educación</a>
             </div>
         </nav>
     </header>
@@ -475,6 +527,31 @@
                     <div id="project-viewer">
                         <div id="project-content"></div>
                         <button class="btn close-project" onclick="cerrarProyecto()">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="educacion" class="tab-content">
+        <section class="container">
+            <h2 style="padding-top: 2rem;">Mi Educación</h2>
+            <div class="education-section">
+                <div class="education-item">
+                    <div class="education-logo">
+                        <img src="Docs/UNAM.png" alt="Logo UNAM">
+                    </div>
+                    <div class="education-info">
+                        <h3>Universidad Nacional Autónoma de México (UNAM)</h3>
+                        <p><strong>Carrera:</strong> Matemáticas Aplicadas y Computación</p>
+                        <p><strong>Descripción:</strong>
+                            Egresada de la Licenciatura en Matemáticas Aplicadas y Computación por la Universidad Nacional Autónoma de México (UNAM). Durante mi formación académica desarrollé una sólida base en matemáticas, estadística, programación y análisis de datos, combinando el pensamiento lógico con la resolución estructurada de problemas.
+
+Mi preparación académica me permitió adquirir conocimientos en modelado matemático, estructuras de datos, algoritmos, bases de datos y desarrollo de software, así como en el uso de herramientas tecnológicas orientadas al análisis y procesamiento de información.
+
+Esta formación integral me ha brindado la capacidad de abordar problemas complejos desde una perspectiva cuantitativa y tecnológica, diseñando soluciones eficientes y fundamentadas en datos.
+                        </p>
+                        <a href="https://mac.acatlan.unam.mx/" target="_blank" class="btn">Conoce MAC</a>
                     </div>
                 </div>
             </div>
