@@ -48,12 +48,51 @@
             opacity: 0.8;
         }
 
+        .tabs {
+            display: flex;
+            gap: 0;
+            margin-top: 60px;
+            background: white;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 1.5rem;
+            background: #f5f5f5;
+            border: none;
+            color: #333;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-bottom: 3px solid transparent;
+            font-weight: 500;
+        }
+
+        .tab-btn:hover {
+            background: #e0e0e0;
+        }
+
+        .tab-btn.active {
+            background: white;
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-align: center;
-            padding: 150px 2rem 100px;
-            margin-top: 60px;
+            padding: 80px 2rem 100px;
             animation: slideInDown 0.8s ease-out;
         }
 
@@ -75,13 +114,67 @@
         }
 
         section {
-            padding: 4rem 0;
+            padding: 0;
             animation: fadeIn 0.8s ease-out;
+        }
+
+        .tab-content section {
+            padding-top: 6rem;
+        }
+
+        .tab-content.container {
+            padding: 4rem 2rem;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            padding: 6rem 2rem 3rem 2rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-image {
+            flex: 0 0 300px;
+            text-align: center;
+        }
+
+        .profile-image img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 5px solid #667eea;
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        .profile-info {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .profile-info h2 {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        .profile-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1rem;
+            text-align: justify;
         }
 
         section h2 {
             font-size: 2.5rem;
             margin-bottom: 2rem;
+            margin-top: 1rem;
             text-align: center;
             color: #667eea;
         }
@@ -115,6 +208,13 @@
             justify-content: center;
             color: white;
             font-size: 3rem;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .card-content {
@@ -143,11 +243,42 @@
             border-radius: 10px;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             animation: bounceIn 0.8s ease-out;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
         }
 
         .skill-item h3 {
             color: #667eea;
             margin-top: 0.5rem;
+        }
+
+        .skills-description {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+            color: #555;
+            text-align: justify;
+            border-left: 5px solid #667eea;
+            animation: slideInUp 0.7s ease-out;
+        }
+
+        .skills-description p {
+            margin-bottom: 1rem;
+        }
+
+        .skills-description p:last-child {
+            margin-bottom: 0;
         }
 
         footer {
@@ -178,6 +309,47 @@
 
         .btn:hover {
             background: #764ba2;
+        }
+
+        .project-viewer-section {
+            background: #f5f5f5;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+
+        #project-viewer {
+            display: none;
+            background: white;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            margin: 0 auto;
+            max-width: 900px;
+            animation: slideInUp 0.5s ease-out;
+        }
+
+        #project-viewer.active {
+            display: block;
+        }
+
+        #project-viewer h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        #project-viewer p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .close-project {
+            background: #999;
+            margin-top: 1.5rem;
+        }
+
+        .close-project:hover {
+            background: #666;
         }
 
         @keyframes slideInDown {
@@ -237,82 +409,190 @@
 <body>
     <header>
         <nav>
-            <h1>Mi Portafolio</h1>
+            <h1>Frida Torrecilla</h1>
             <div>
-                <a href="#inicio">Inicio</a>
-                <a href="#proyectos">Proyectos</a>
-                <a href="#habilidades">Habilidades</a>
-                <a href="#contacto">Contacto</a>
+                <a href="#" onclick="cambiarTab('inicio'); return false;">Inicio</a>
+                <a href="#" onclick="cambiarTab('proyectos'); return false;">Proyectos</a>
+                <a href="#" onclick="cambiarTab('habilidades'); return false;">Habilidades</a>
             </div>
         </nav>
     </header>
 
-    <section id="inicio" class="hero">
-        <h1>Bienvenido a Mi Portafolio</h1>
-        <p>Desarrollador Web | Diseñador | Innovador</p>
-    </section>
+    <div id="inicio" class="tab-content active">
+        <section class="hero">
+            <h1>Bienvenido a Mi Portafolio</h1>
+            <p>Desarrollador Web | Anañísta de datos </p>
+        </section>
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="Docs/Inicio.jpg" alt="Foto de perfil">
+            </div>
+            <div class="profile-info">
+                <h2>Sobre Mí</h2>
+                <p>
+                    Soy egresada de la carrera de Matemáticas Aplicadas y Computación de la UNAM, con experiencia en desarrollo tecnológico, análisis de datos y creación de soluciones digitales orientadas a resultados. He participado en proyectos de migración y optimización de sitios web, desarrollo de videojuegos en Unity con C#, y análisis de datos para el sector fintech utilizando herramientas como SAS.
+                </p>
+                <p>
+                    Mi perfil combina pensamiento analítico, habilidades técnicas y enfoque en la mejora de procesos, permitiéndome diseñar e implementar soluciones eficientes que aportan valor real a los usuarios y a las organizaciones.
+                </p>
 
-    <section id="proyectos" class="container">
-        <h2>Mis Proyectos</h2>
-        <div class="projects">
-            <div class="card">
-                <div class="card-img">💻</div>
-                <div class="card-content">
-                    <h3>Proyecto 1</h3>
-                    <p>Descripción de tu primer proyecto destacado.</p>
-                    <a href="#" class="btn">Ver Más</a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-img">🎨</div>
-                <div class="card-content">
-                    <h3>Proyecto 2</h3>
-                    <p>Descripción de tu segundo proyecto destacado.</p>
-                    <a href="#" class="btn">Ver Más</a>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-img">🚀</div>
-                <div class="card-content">
-                    <h3>Proyecto 3</h3>
-                    <p>Descripción de tu tercer proyecto destacado.</p>
-                    <a href="#" class="btn">Ver Más</a>
-                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section id="habilidades" class="skills container">
-        <h2>Mis Habilidades</h2>
-        <div class="skills-grid">
-            <div class="skill-item">
-                <div style="font-size: 2rem;">📱</div>
-                <h3>HTML & CSS</h3>
+    <div id="proyectos" class="tab-content">
+        <section class="container">
+            <h2>Mis Proyectos</h2>
+            <div class="projects">
+                <div class="card">
+                    <div class="card-img"><img src="Docs/Godaddy.png" alt="Proyecto 1"></div>
+                    <div class="card-content">
+                        <h3>Proyecto 1</h3>
+                        <p>Migración de páginas web a nuevas tecnologías y frameworks.</p>
+                        <button class="btn" onclick="mostrarProyecto('proyecto1')">Ver Más</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img"><img src="Docs/unity.jpg" alt="Proyecto 2"></div>
+                    <div class="card-content">
+                        <h3>Proyecto 2</h3>
+                        <p>Videojuego desarrollado en Unity con C#.</p>
+                        <button class="btn" onclick="mostrarProyecto('proyecto2')">Ver Más</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-img"><img src="Docs/SAS.webp" alt="Proyecto 3"></div>
+                    <div class="card-content">
+                        <h3>Proyecto 3</h3>
+                        <p>Análisis de datos para el sector fintech utilizando herramientas como SAS.</p>
+                        <button class="btn" onclick="mostrarProyecto('proyecto3')">Ver Más</button>
+                    </div>
+                </div>
             </div>
-            <div class="skill-item">
-                <div style="font-size: 2rem;">⚡</div>
-                <h3>JavaScript</h3>
+
+            <div class="project-viewer-section" id="project-section">
+                <div class="container">
+                    <div id="project-viewer">
+                        <div id="project-content"></div>
+                        <button class="btn close-project" onclick="cerrarProyecto()">Cerrar</button>
+                    </div>
+                </div>
             </div>
-            <div class="skill-item">
-                <div style="font-size: 2rem;">🎯</div>
-                <h3>React</h3>
+        </section>
+    </div>
+
+    <div id="habilidades" class="tab-content">
+        <section class="skills container">
+            <h2 style="padding-top: 2rem;">Mis Habilidades</h2>
+            <div class="skills-description">
+                <p>Cuento con una sólida formación analítica y técnica respaldada por mi carrera en Matemáticas Aplicadas y Computación. Tengo experiencia en análisis y tratamiento de datos, incluyendo limpieza, normalización y modelado estadístico, utilizando herramientas como SAS. Poseo habilidades en desarrollo de software y programación en C#, así como experiencia en el uso de Unity para la creación de videojuegos en 2D.</p>
+                <p>También tengo conocimientos en desarrollo web (HTML, CSS, JavaScript), migración y gestión de hosting, configuración de bases de datos y administración básica de servidores. Me destaco por mi capacidad para resolver problemas, optimizar procesos, trabajar con datos complejos y transformar requerimientos de negocio en soluciones tecnológicas funcionales.</p>
+                <p>Además, cuento con habilidades de organización, trabajo en equipo, comunicación efectiva y adaptación a nuevos entornos tecnológicos.</p>
             </div>
-            <div class="skill-item">
-                <div style="font-size: 2rem;">🗄️</div>
-                <h3>Bases de Datos</h3>
+            <div class="skills-grid">
+                <a href="https://esdima.com/que-es-html-y-css/" target="_blank" class="skill-item">
+                    <div style="font-size: 2rem;">📱</div>
+                    <h3>HTML & CSS</h3>
+                </a>
+                <a href="https://developer.mozilla.org/es/docs/Learn_web_development/Core/Scripting/What_is_JavaScript" target="_blank" class="skill-item">
+                    <div style="font-size: 2rem;">⚡</div>
+                    <h3>JavaScript</h3>
+                </a>
+                <a href="https://www.sas.com/" target="_blank" class="skill-item">
+                    <div style="font-size: 2rem;">🎯</div>
+                    <h3>SAS</h3>
+                </a>
+                <a href="https://www.ibm.com/mx-es/think/topics/database" target="_blank" class="skill-item">
+                    <div style="font-size: 2rem;">🗄️</div>
+                    <h3>Bases de Datos</h3>
+                </a>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
     <footer id="contacto">
         <h3>Contacto</h3>
-        <p>Email: tu@email.com</p>
+        <p>Email: fridatorrecillal28@gmail.com</p>
         <p>
-            <a href="#">LinkedIn</a> | 
-            <a href="#">GitHub</a> | 
-            <a href="#">Twitter</a>
+            <a href="www.linkedin.com/in/frida-torrecilla-52bb4622b">LinkedIn</a> | 
+            <a href="https://github.com/FridaLeon">GitHub</a> | 
         </p>
-        <p>&copy; 2024 Mi Portafolio. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Mi Portafolio.</p>
     </footer>
+
+    <script>
+        function cambiarTab(tabId) {
+            // Ocultar todos los tab-content
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Desactivar todos los botones de tab
+            const botones = document.querySelectorAll('.tab-btn');
+            botones.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Mostrar el tab seleccionado
+            const tabActual = document.getElementById(tabId);
+            if (tabActual) {
+                tabActual.classList.add('active');
+            }
+
+            // Activar el botón correspondiente
+            event.target.classList.add('active');
+        }
+
+        const projectsData = {
+            proyecto1: {
+                title: '💻 Proyecto 1 - Migración de Páginas Web',
+                description: 'Este proyecto consistió en la migración de varias páginas web desde un hosting anterior hacia un nuevo proveedor de alojamiento. El objetivo principal fue garantizar la continuidad del servicio, mejorar el rendimiento y optimizar la seguridad de los sitios web durante el proceso de transición.',
+                technologies: 'cPanel, FTP, bases de datos MySQL, DNS, servicios de hosting compartido y herramientas de respaldo (Godaddy y SiteGround)',
+                features: ['Transferencia completa de archivos y bases de datos', 'Configuración y actualización de registros DNS', 'Validación de integridad de la información migrada', 'Pruebas funcionales posteriores a la migración', 'Implementación de respaldos reventivos antes del traslado'],
+                result: 'La migración fue realizada de manera exitosa, sin pérdida de información ni interrupciones prolongadas del servicio. Los sitios quedaron completamente funcionales en el nuevo hosting, con mejoras en estabilidad y tiempos de carga.'
+            },
+            proyecto2: {
+                title: '💻 Proyecto 2 - Videojugo',
+                description: 'Este proyecto consistió en el desarrollo de un videojuego estilo arcade con estética 8 bits, creado en Unity utilizando C#. El juego se desarrolla dentro de una nave espacial, donde el protagonista emprende una misión para rescatar a su amigo, enfrentando distintos obstáculos y enemigos a lo largo del recorrido. El objetivo principal fue diseñar una experiencia dinámica, entretenida y con mecánicas clásicas inspiradas en los videojuegos retro.',
+                technologies: 'Unity Engine, C#, sistema de físicas 2D, animaciones sprite, control de colisiones, diseño de niveles y edición de audio.',
+                features: ['Juego en formato bidimensional (2D) con desplazamiento lateral, Estilo visual 8 bits con diseño tipo arcade, Cuatro niveles básicos con dificultad progresiva, Sistema de recolección de monedas para acumulación de puntos, Mecánica de disparo para enfrentar enemigos, Sistema de vidas y detección de colisiones, Música y efectos de sonido retro para ambientación, Pantalla de inicio, menú principal y pantalla de victoria/derrota.'],
+                result: 'El videojuego fue terminado con éxito, cumpliendo con todas las funcionalidades planteadas desde el inicio. Se logró una experiencia fluida, con mecánicas funcionales y niveles equilibrados, demostrando un correcto manejo de Unity y programación en C# para el desarrollo de videojuegos en 2D.'
+            },
+            proyecto3: {
+                title: '💻 Proyecto 3 - Fintech',
+                description: 'Este proyecto consistió en el desarrollo de una solución estratégica para un cliente del sector fintech que buscaba mejorar la experiencia del prestatario a lo largo de su ciclo de crédito. El objetivo principal fue identificar oportunidades de mejora mediante el análisis de datos históricos y operativos, optimizando procesos y reduciendo fricciones en la interacción con los usuarios.',
+                technologies: 'SAS Viya, SAS Model Studio, SAS Visual Analitics.',
+                features: ['Recolección y consolidación de bases de datos provenientes de distintas fuentes.', 'Limpieza, depuración y tratamiento de datos inconsistentes o incompletos.', 'Normalización de variables para asegurar coherencia en el análisis.', 'Análisis exploratorio de datos para detectar patrones de comportamiento.', 'Segmentación de clientes según perfil de riesgo y comportamiento de pago.', 'Identificación de puntos críticos en el proceso del prestatario.', 'Desarrollo de propuestas estratégicas basadas en evidencia cuantitativa.'],
+                result: 'Se presentaron diversas propuestas de mejora enfocadas en optimizar la experiencia del prestatario y mejorar indicadores clave del negocio. El cliente aprobó una de las soluciones planteadas, la cual fue implementada exitosamente, logrando mejoras medibles en eficiencia operativa y satisfacción del usuario.'
+            }
+        };
+
+        function mostrarProyecto(proyectoId) {
+            const data = projectsData[proyectoId];
+            if (!data) return;
+
+            const featuresHTML = data.features.map(f => `<li>${f}</li>`).join('');
+            const content = `
+                <h3>${data.title}</h3>
+                <p><strong>Descripción:</strong> ${data.description}</p>
+                <p><strong>Tecnologías utilizadas:</strong> ${data.technologies}</p>
+                <p><strong>Características principales:</strong>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        ${featuresHTML}
+                    </ul>
+                </p>
+                <p><strong>Resultado:</strong> ${data.result}</p>
+            `;
+
+            document.getElementById('project-content').innerHTML = content;
+            document.getElementById('project-viewer').classList.add('active');
+            document.getElementById('project-section').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        function cerrarProyecto() {
+            document.getElementById('project-viewer').classList.remove('active');
+        }
+    </script>
 </body>
 </html>
