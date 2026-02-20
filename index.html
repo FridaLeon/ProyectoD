@@ -41,11 +41,18 @@
             color: white;
             text-decoration: none;
             margin: 0 1.5rem;
-            transition: opacity 0.3s;
+            transition: opacity 0.3s, border-bottom 0.3s;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid transparent;
         }
 
         nav a:hover {
             opacity: 0.8;
+        }
+
+        nav a.active {
+            opacity: 1;
+            border-bottom: 2px solid white;
         }
 
         .tabs {
@@ -311,6 +318,58 @@
             text-align: justify;
         }
 
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .certification-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            animation: slideInUp 0.6s ease-out;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            border-top: 4px solid #667eea;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .cert-icon {
+            margin-bottom: 1rem;
+            display: block;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cert-icon img {
+            max-width: 100%;
+            max-height: 80px;
+            object-fit: contain;
+        }
+
+        .certification-card h3 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .certification-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 0.8rem;
+            text-align: justify;
+        }
+
         .skills-description {
             background: white;
             padding: 2rem;
@@ -462,10 +521,11 @@
         <nav>
             <h1>Frida Torrecilla</h1>
             <div>
-                <a href="#" onclick="cambiarTab('inicio'); return false;">Inicio</a>
-                <a href="#" onclick="cambiarTab('proyectos'); return false;">Proyectos</a>
-                <a href="#" onclick="cambiarTab('habilidades'); return false;">Habilidades</a>
-                <a href="#" onclick="cambiarTab('educacion'); return false;">Educación</a>
+                <a href="#" data-tab="inicio" onclick="cambiarTab('inicio'); return false;">Inicio</a>
+                <a href="#" data-tab="proyectos" onclick="cambiarTab('proyectos'); return false;">Proyectos</a>
+                <a href="#" data-tab="habilidades" onclick="cambiarTab('habilidades'); return false;">Habilidades</a>
+                <a href="#" data-tab="educacion" onclick="cambiarTab('educacion'); return false;">Educación</a>
+                <a href="#" data-tab="certificaciones" onclick="cambiarTab('certificaciones'); return false;">Certificaciones</a>
             </div>
         </nav>
     </header>
@@ -558,6 +618,30 @@ Esta formación integral me ha brindado la capacidad de abordar problemas comple
         </section>
     </div>
 
+    <div id="certificaciones" class="tab-content">
+        <section class="container">
+            <h2 style="padding-top: 2rem;">Certificaciones y Cursos</h2>
+            <div class="certifications-grid">
+                <div class="certification-card">
+                    <div class="cert-icon"><img src="Docs/SAS-c.png" alt="Logo SAS"></div>
+                    <h3>SAS Certified Associate: Programming Fundamentals Using SAS 9.4</h3>
+                    <p><strong>Institución:</strong> SAS</p>
+                    <p><strong>Año:</strong> 2025</p>
+                    <p><strong>Descripción:</strong> La certificación SAS Certified Associate: Programming Fundamentals Using SAS 9.4 es una credencial oficial otorgada por SAS Institute que valida conocimientos básicos en programación con el software SAS versión 9.4.</p>
+                    <a href="https://www.credly.com/badges/a0dde5e4-8d3b-44a5-937c-204350067401/public_url" class="btn" target="_blank">Ver Certificado</a>
+                </div>
+                <div class="certification-card">
+                    <div class="cert-icon"><img src="Docs/IBM-c.png" alt="Logo IBM"></div>
+                    <h3>Enterprise Design Thinking Practitioner</h3>
+                    <p><strong>Institución:</strong> IBM</p>
+                    <p><strong>Año:</strong> 2022</p>
+                    <p><strong>Descripción:</strong> La certificación Enterprise Design Thinking Practitioner es una credencial otorgada por IBM que valida conocimientos fundamentales en la metodología de Enterprise Design Thinking.</p>
+                    <a href="https://www.credly.com/badges/ef128d2e-f9e7-4b75-b92d-2b36549d9ca9" class="btn" target="_blank">Ver Certificado</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
     <div id="habilidades" class="tab-content">
         <section class="skills container">
             <h2 style="padding-top: 2rem;">Mis Habilidades</h2>
@@ -598,6 +682,11 @@ Esta formación integral me ha brindado la capacidad de abordar problemas comple
     </footer>
 
     <script>
+        // Marcar el enlace activo al cargar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            cambiarTab('inicio');
+        });
+
         function cambiarTab(tabId) {
             // Ocultar todos los tab-content
             const tabs = document.querySelectorAll('.tab-content');
@@ -605,10 +694,10 @@ Esta formación integral me ha brindado la capacidad de abordar problemas comple
                 tab.classList.remove('active');
             });
 
-            // Desactivar todos los botones de tab
-            const botones = document.querySelectorAll('.tab-btn');
-            botones.forEach(btn => {
-                btn.classList.remove('active');
+            // Remover clase active de todos los links
+            const links = document.querySelectorAll('nav a');
+            links.forEach(link => {
+                link.classList.remove('active');
             });
 
             // Mostrar el tab seleccionado
@@ -617,8 +706,11 @@ Esta formación integral me ha brindado la capacidad de abordar problemas comple
                 tabActual.classList.add('active');
             }
 
-            // Activar el botón correspondiente
-            event.target.classList.add('active');
+            // Marcar el link como activo
+            const activeLink = document.querySelector(`nav a[data-tab="${tabId}"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
         }
 
         const projectsData = {
